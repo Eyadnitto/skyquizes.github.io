@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Sky Quizes</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #f5f0e7;
+      color: #7d3517;
+      font-family: Arial, Tahoma, sans-serif;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 1100px;
+      margin: auto;
+      padding: 25px 20px 50px;
+      text-align: center;
+    }
+
+    .logo {
+      direction: ltr;
+      margin-bottom: 35px;
+      color: #883b1b;
+      font-family: Georgia, serif;
+      font-size: clamp(48px, 9vw, 90px);
+      font-weight: bold;
+      line-height: 0.9;
+      letter-spacing: 3px;
+      text-shadow:
+        4px 4px 0 #f5f0e7,
+        6px 6px 0 #883b1b;
+    }
+
+    .arabic-title {
+      max-width: 800px;
+      margin: 0 auto 15px;
+      color: #111;
+      font-family: Tahoma, Arial, sans-serif;
+      font-size: clamp(34px, 6vw, 65px);
+      font-weight: bold;
+      line-height: 1.4;
+    }
+
+    .description {
+      margin: 10px auto 25px;
+      color: #222;
+      font-size: clamp(17px, 2.5vw, 24px);
+      line-height: 1.8;
+    }
+
+    .search-box {
+      display: flex;
+      max-width: 650px;
+      margin: 25px auto;
+      gap: 10px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 14px 18px;
+      border: 2px solid #a9542c;
+      border-radius: 12px;
+      outline: none;
+      background: #fffaf2;
+      color: #333;
+      font-size: 17px;
+    }
+
+    .search-box input:focus {
+      border-color: #713015;
+      box-shadow: 0 0 5px rgba(113, 48, 21, 0.3);
+    }
+
+    .search-box button {
+      padding: 13px 25px;
+      border: none;
+      border-radius: 10px;
+      background: #883b1b;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .search-box button:hover {
+      background: #713015;
+      transform: translateY(-2px);
+    }
+
+    .quiz-section {
+      max-width: 900px;
+      margin: 35px auto;
+    }
+
+    .quiz-section h2 {
+      margin-bottom: 20px;
+      color: #713015;
+      font-size: 28px;
+    }
+
+    .quiz-buttons {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    /*
+      The complete button is clickable because it is an <a> link.
+    */
+    .quiz-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 60px;
+      padding: 18px 12px;
+      border-radius: 10px;
+      background: #a9542c;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      text-decoration: none;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .quiz-button:hover {
+      background: #713015;
+      transform: translateY(-3px);
+    }
+
+    .click-link {
+      display: inline-block;
+      margin-top: 25px;
+      color: #883b1b;
+      font-size: 18px;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    .hand-image {
+      display: block;
+      width: min(280px, 75%);
+      height: auto;
+      margin: 20px auto 0;
+    }
+
+    .no-results {
+      display: none;
+      margin-top: 20px;
+      color: #555;
+      font-size: 18px;
+    }
+
+    /*
+      Mobile design
+    */
+    @media (max-width: 700px) {
+      .page {
+        padding: 20px 14px 40px;
+      }
+
+      .logo {
+        margin-bottom: 25px;
+      }
+
+      .search-box {
+        flex-direction: column;
+      }
+
+      .search-box button {
+        width: 100%;
+      }
+
+      .quiz-buttons {
+        grid-template-columns: 1fr;
+      }
+
+      .quiz-button {
+        min-height: 55px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="page">
+
+    <div class="logo">
+      SKY<br>
+      QUIZES
+    </div>
+
+    <h1 class="arabic-title">
+      مراجعة على السريع
+    </h1>
+
+    <p class="description">
+      تم إنشاء الموقع لمراجعة كويزات التليجرام<br>
+      بسهولة تامة
+    </p>
+
+    <!-- Search bar -->
+    <div class="search-box">
+      <input
+        type="search"
+        id="searchInput"
+        placeholder="ابحث عن اختبار..."
+        aria-label="ابحث عن اختبار"
+      >
+
+      <button type="button" onclick="searchQuizzes()">
+        بحث
+      </button>
+    </div>
+
+    <!-- Quiz buttons -->
+    <section class="quiz-section">
+      <h2>اختر الاختبار</h2>
+
+      <div class="quiz-buttons" id="quizButtons">
+
+        <a
+          class="quiz-button"
+          href="math.html"
+          data-name="رياضيات math"
+        >
+          اختبار الرياضيات
+        </a>
+
+        <a
+          class="quiz-button"
+          href="science.html"
+          data-name="علوم science"
+        >
+          اختبار العلوم
+        </a>
+
+        <a
+          class="quiz-button"
+          href="english.html"
+          data-name="انجليزي اللغة الإنجليزية english"
+        >
+          اختبار اللغة الإنجليزية
+        </a>
+
+        <a
+          class="quiz-button"
+          href="history.html"
+          data-name="تاريخ history"
+        >
+          اختبار التاريخ
+        </a>
+
+        <a
+          class="quiz-button"
+          href="chemistry.html"
+          data-name="كيمياء chemistry"
+        >
+          اختبار الكيمياء
+        </a>
+
+        <a
+          class="quiz-button"
+          href="geography.html"
+          data-name="جغرافيا geography"
+        >
+          اختبار الجغرافيا
+        </a>
+
+      </div>
+
+      <p class="no-results" id="noResults">
+        لم يتم العثور على نتائج
+      </p>
+    </section>
+
+
+    <!-- Put your image in the same folder and name it hand.png -->
+
+
+  </main>
+
+  <script>
+    const searchInput = document.getElementById("searchInput");
+    const quizButtons = document.querySelectorAll(".quiz-button");
+    const noResults = document.getElementById("noResults");
+
+    function searchQuizzes() {
+      const searchText = searchInput.value.toLowerCase().trim();
+      let visibleButtons = 0;
+
+      quizButtons.forEach(function(button) {
+        const quizName = button
+          .getAttribute("data-name")
+          .toLowerCase();
+
+        if (quizName.includes(searchText)) {
+          button.style.display = "flex";
+          visibleButtons++;
+        } else {
+          button.style.display = "none";
+        }
+      });
+
+      noResults.style.display =
+        visibleButtons === 0 ? "block" : "none";
+    }
+
+    // Search automatically while typing
+    searchInput.addEventListener("input", searchQuizzes);
+  </script>
+
+</body>
+
+</html>
