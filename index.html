@@ -22,7 +22,7 @@
 
     .page {
       width: 100%;
-      max-width: 1100px;
+      max-width: 1000px;
       margin: auto;
       padding: 25px 20px 50px;
       text-align: center;
@@ -53,81 +53,43 @@
     }
 
     .description {
-      margin: 10px auto 25px;
+      margin: 10px auto 35px;
       color: #222;
       font-size: clamp(17px, 2.5vw, 24px);
       line-height: 1.8;
     }
 
-    .search-box {
-      display: flex;
-      max-width: 650px;
-      margin: 25px auto;
-      gap: 10px;
-    }
-
-    .search-box input {
-      width: 100%;
-      padding: 14px 18px;
-      border: 2px solid #a9542c;
-      border-radius: 12px;
-      outline: none;
-      background: #fffaf2;
-      color: #333;
-      font-size: 17px;
-    }
-
-    .search-box input:focus {
-      border-color: #713015;
-      box-shadow: 0 0 5px rgba(113, 48, 21, 0.3);
-    }
-
-    .search-box button {
-      padding: 13px 25px;
-      border: none;
-      border-radius: 10px;
-      background: #883b1b;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-      transition: 0.2s ease;
-    }
-
-    .search-box button:hover {
-      background: #713015;
-      transform: translateY(-2px);
-    }
-
     .quiz-section {
-      max-width: 900px;
+      max-width: 850px;
       margin: 35px auto;
     }
 
     .quiz-section h2 {
-      margin-bottom: 20px;
+      margin-bottom: 25px;
       color: #713015;
       font-size: 28px;
     }
 
+    /*
+      Two buttons on every line.
+      The complete button is clickable.
+    */
     .quiz-buttons {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
     }
 
-    /*
-      The complete button is clickable because it is an <a> link.
-    */
     .quiz-button {
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 60px;
+      min-height: 70px;
       padding: 18px 12px;
-      border-radius: 10px;
+      border-radius: 12px;
       background: #a9542c;
       color: white;
-      font-size: 17px;
+      font-size: 18px;
       font-weight: bold;
       text-decoration: none;
       cursor: pointer;
@@ -139,55 +101,35 @@
       transform: translateY(-3px);
     }
 
-    .click-link {
-      display: inline-block;
-      margin-top: 25px;
-      color: #883b1b;
-      font-size: 18px;
-      font-weight: bold;
-      text-decoration: underline;
-    }
-
-    .hand-image {
-      display: block;
-      width: min(280px, 75%);
-      height: auto;
-      margin: 20px auto 0;
-    }
-
-    .no-results {
-      display: none;
-      margin-top: 20px;
-      color: #555;
-      font-size: 18px;
+    .quiz-button:active {
+      transform: translateY(0);
     }
 
     /*
-      Mobile design
+      Mobile design:
+      Keeps two buttons on every line.
     */
-    @media (max-width: 700px) {
+    @media (max-width: 600px) {
       .page {
-        padding: 20px 14px 40px;
+        padding: 20px 12px 40px;
       }
 
       .logo {
         margin-bottom: 25px;
       }
 
-      .search-box {
-        flex-direction: column;
-      }
-
-      .search-box button {
-        width: 100%;
-      }
-
       .quiz-buttons {
-        grid-template-columns: 1fr;
+        gap: 10px;
       }
 
       .quiz-button {
-        min-height: 55px;
+        min-height: 60px;
+        padding: 12px 6px;
+        font-size: 15px;
+      }
+
+      .quiz-section h2 {
+        font-size: 24px;
       }
     }
   </style>
@@ -211,117 +153,71 @@
       بسهولة تامة
     </p>
 
-    <!-- Search bar -->
-    <div class="search-box">
-      <input
-        type="search"
-        id="searchInput"
-        placeholder="ابحث عن اختبار..."
-        aria-label="ابحث عن اختبار"
-      >
-
-      <button type="button" onclick="searchQuizzes()">
-        بحث
-      </button>
-    </div>
-
-    <!-- Quiz buttons -->
     <section class="quiz-section">
       <h2>اختر الاختبار</h2>
 
-      <div class="quiz-buttons" id="quizButtons">
+      <div class="quiz-buttons">
 
         <a
           class="quiz-button"
-          href="t.me/QuizBot?start=8jKpDOw6"
-          data-name="جدول الضرب"
+          href="https://t.me/QuizBot?start=8jKpDOw6"
+          target="_blank"
+          rel="noopener"
         >
           جدول الضرب
         </a>
 
         <a
           class="quiz-button"
-          href="t.me/QuizBot?start=o5vjXYOh"
-          data-name="المحاضرة ٣"
+          href="https://t.me/QuizBot?start=o5vjXYOh"
+          target="_blank"
+          rel="noopener"
         >
-         المحاضرة ٣
+          المحاضرة ٣
         </a>
 
         <a
           class="quiz-button"
-          href="t.me/QuizBot?start=eEQePWQc"
-          data-name="المحاضرة ٤"
+          href="https://t.me/QuizBot?start=eEQePWQc"
+          target="_blank"
+          rel="noopener"
         >
-         المحاضرة ٤
+          المحاضرة ٤
         </a>
 
         <a
           class="quiz-button"
-          href="t.me/QuizBot?start=M8jwScy0"
-          data-name="المحاضرة ٥"
+          href="https://t.me/QuizBot?start=M8jwScy0"
+          target="_blank"
+          rel="noopener"
         >
           المحاضرة ٥
         </a>
 
         <a
           class="quiz-button"
-          href="t.me/QuizBot?start=NgOEBg6p"
-          data-name="المحاضرة ٦"
+          href="https://t.me/QuizBot?start=NgOEBg6p"
+          target="_blank"
+          rel="noopener"
         >
           المحاضرة ٦
         </a>
 
         <a
           class="quiz-button"
-          href="t.me/QuizBot?start=hve4X2pH"
-          data-name="المحاضرة ٧"
+          href="https://t.me/QuizBot?start=hve4X2pH"
+          target="_blank"
+          rel="noopener"
         >
-           المحاضرة ٧
+          المحاضرة ٧
         </a>
 
       </div>
-
-      <p class="no-results" id="noResults">
-        لم يتم العثور على نتائج
-      </p>
     </section>
 
-
-    <!-- Put your image in the same folder and name it hand.png -->
-
-
   </main>
-
-  <script>
-    const searchInput = document.getElementById("searchInput");
-    const quizButtons = document.querySelectorAll(".quiz-button");
-    const noResults = document.getElementById("noResults");
-
-    function searchQuizzes() {
-      const searchText = searchInput.value.toLowerCase().trim();
-      let visibleButtons = 0;
-
-      quizButtons.forEach(function(button) {
-        const quizName = button
-          .getAttribute("data-name")
-          .toLowerCase();
-
-        if (quizName.includes(searchText)) {
-          button.style.display = "flex";
-          visibleButtons++;
-        } else {
-          button.style.display = "none";
-        }
-      });
-
-      noResults.style.display =
-        visibleButtons === 0 ? "block" : "none";
-    }
-
-    // Search automatically while typing
-    searchInput.addEventListener("input", searchQuizzes);
-  </script>
 
 </body>
 
 </html>
+
